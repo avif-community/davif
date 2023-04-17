@@ -15,14 +15,14 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        codename: [bionic, focal]
+        codename: [focal, jammy]
     steps:
       - uses: actions/checkout@v3
         with:
           submodules: 'recursive'
           fetch-depth: 0
       - name: Build debian package
-        uses: link-u/execute-on-separated-ubuntu@master
+        uses: avif-community/execute-on-separated-ubuntu@master
         with:
           script: scripts/build-debian-package.sh
           on: ${{ matrix.codename }}
@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        codename: [bionic, focal]
+        codename: [focal, jammy]
     steps:
       - uses: actions/checkout@v3
       - name: Download artifact
@@ -80,7 +80,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        codename: [bionic, focal]
+        codename: [focal, jammy]
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v3

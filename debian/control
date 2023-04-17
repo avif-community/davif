@@ -4,9 +4,9 @@ Priority: optional
 Maintainer: Ryo Hirafuji <ryo.hirafuji@link-u.co.jp>
 Build-Depends: debhelper (>= 10), cmake (>= 3.13), pkg-config, gcc-9, g++-9, libc6-dev, libstdc++-9-dev, yasm, nasm
 Standards-Version: 4.1.2
-Homepage: https://github.com/link-u/davif
-Vcs-Git: https://github.com/link-u/davif.git
-Vcs-Browser: https://github.com/link-u/davif
+Homepage: https://github.com/avif-community/davif
+Vcs-Git: https://github.com/avif-community/davif.git
+Vcs-Browser: https://github.com/avif-community/davif
 
 Package: davif
 Architecture: any

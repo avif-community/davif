@@ -3,7 +3,7 @@
 	url = https://code.videolan.org/videolan/dav1d.git
 [submodule "external/libavif-container"]
 	path = external/libavif-container
-	url = https://github.com/link-u/libavif-container.git
+	url = https://github.com/avif-community/libavif-container.git
 [submodule "external/libpng"]
 	path = external/libpng
 	url = https://git.code.sf.net/p/libpng/code
