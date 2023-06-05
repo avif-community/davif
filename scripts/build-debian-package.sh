@@ -22,8 +22,8 @@ DATE=$(LC_ALL=C TZ=JST-9 date '+%a, %d %b %Y %H:%M:%S %z')
 cat <<EOF > "${ROOT_DIR}/debian/changelog"
 davif (${VERSION}) unstable; urgency=medium
 
-  * This is atomated build.
-  * Please see https://github.com/link-u/davif/releases for more information!
+  * This is automated build.
+  * Please see https://github.com/avif-community/davif/releases for more information!
 
  -- Ryo Hirafuji <ryo.hirafuji@link-u.co.jp>  ${DATE}
 EOF
@@ -34,20 +34,6 @@ apt-get update
 apt-get install -y --no-install-recommends apt-transport-https ca-certificates gnupg software-properties-common wget
 wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null
 apt-add-repository "deb https://apt.kitware.com/ubuntu/ $(lsb_release -cs) main"
-
-# Workaround: gcc >= 8.0 is required.
-case $(lsb_release -cs) in
-  bionic)
-      export CC=gcc-8
-      export CXX=g++-8
-      sed -i -r "s/gcc-9/gcc-8/g"                       "${ROOT_DIR}/debian/control"
-      sed -i -r "s/g\+\+-9/g++-8/g"                     "${ROOT_DIR}/debian/control"
-      sed -i -r "s/libstdc\+\+-9-dev/libstdc++-8-dev/g" "${ROOT_DIR}/debian/control"
-      # bionic's nasm is too old.
-      sed -i -e 's/-Denable_asm=true/-Denable_asm=false/g' scripts/build-deps.sh
-    ;;
-  *) ;;
-esac
 
 # Workaround: meson has been upgraded so fast, we use the latest versions.
 apt-get install -y --no-install-recommends python3-venv python3-pip python3-setuptools
