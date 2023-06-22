@@ -8,7 +8,7 @@ on:
       - v*
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -22,7 +22,7 @@ jobs:
           submodules: 'recursive'
           fetch-depth: 0
       - name: Build debian package
-        uses: avif-community/execute-on-separated-ubuntu@master
+        uses: avif-community/execute-on-separated-ubuntu@main
         with:
           script: scripts/build-debian-package.sh
           on: ${{ matrix.codename }}
@@ -51,7 +51,7 @@ jobs:
           name: ${{ matrix.codename }}
           path: artifact
       - name: Check debian package
-        uses: avif-community/execute-on-separated-ubuntu@master
+        uses: avif-community/execute-on-separated-ubuntu@main
         with:
           script: scripts/test.sh
           on: ${{ matrix.codename }}
